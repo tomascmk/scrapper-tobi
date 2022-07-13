@@ -54,10 +54,7 @@ const fs = require('fs');
         // stringify JSON Object
         var jsonContent = JSON.stringify(data);
 
-        const date = new Date();
-        const documentId = date.getTime()
-
-        fs.writeFile(`./json/data${documentId}.json`, jsonContent, 'utf8', function (err) {
+        fs.writeFile(`./json/data${new Date().getTime()}.json`, jsonContent, 'utf8', function (err) {
             if (err) {
                 console.log("An error occured while writing JSON Object to File.");
                 return console.log(err);

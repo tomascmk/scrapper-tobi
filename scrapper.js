@@ -31,7 +31,6 @@ const fs = require('fs');
         const results = await page.$$('div.VkpGBb');
 
         for (const result of results) {
-
             const title = await result.evaluate(el => el.querySelector("div.dbg0pd > span.OSrXXb").textContent);
             let phone = await result.evaluate(el => el.querySelectorAll("div.rllt__details > div")[2].textContent);
             phone = phone && phone !== "undefined" ? phone.split("+")[1] ? "+" + phone.split("+")[1] : phone.split(" · ")[1] : undefined;
@@ -44,7 +43,7 @@ const fs = require('fs');
                 const url = await resultUrl.evaluate(el => el.querySelector("div.QqG1Sd > a").href);
                 urls.push(url ?? "Undefined");
             }
-            console.log("Getting data...");
+            console.log(`Getting data (${results.indexOf(result) + 1}/${results.length})`);
             data.push({ title, phone });
         }
 

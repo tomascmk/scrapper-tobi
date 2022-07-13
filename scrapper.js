@@ -11,7 +11,9 @@ const fs = require('fs');
     const page = await browser.newPage();
     const userQuery = prompt('Enter your query or paste the URL: ');
     console.log("Scrapping...");
+
     try {
+
         const query = userQuery.split().map(q => q.trim()).join("+");
         await page.goto(`https://www.google.com/search?q=${query}&oq=${query}&aqs=edge.0.69i59j69i60l3.357j0j1&sourceid=chrome&ie=UTF-8`,)
 
